@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         val mutationChance = mutationNumber.text.toString().toDouble()
         val maxIterations = iterationNumber.text.toString().toInt()
 
+        if (mutationChance > 1 || mutationChance < 0)
+            return
+
         val (results, iterations) = solve(y, coefs, mutationChance, populationSize, maxIterations)
         if (iterations >= maxIterations) {
             resultView.text = "The equation wasn't solved"
